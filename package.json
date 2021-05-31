@@ -1,6 +1,6 @@
 {
   "name": "@map-colonies/standard-version-update-helm-version",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This is template for map colonies typescript packages",
   "main": "./src/index.js",
   "scripts": {
