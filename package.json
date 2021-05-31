@@ -1,0 +1,64 @@
+{
+  "name": "@map-colonies/ts-npm-package-boilerplate",
+  "version": "1.0.0",
+  "description": "This is template for map colonies typescript packages",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test:unit": "jest --config=./tests/configurations/unit/jest.config.js",
+    "test:integration": "jest --config=./tests/configurations/integration/jest.config.js",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "prelint:fix": "npm run format:fix",
+    "prelint": "npm run format",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "release": "standard-version",
+    "test": "npm run test:unit && npm run test:integration",
+    "prebuild": "npm run clean",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "npm run build && cd dist && node ./index.js",
+    "clean": "rimraf dist",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MapColonies/ts-npm-package-boilerplate.git"
+  },
+  "author": "MapColonies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MapColonies/ts-npm-package-boilerplate/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/MapColonies/ts-npm-package-boilerplate#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@map-colonies/eslint-config": "^2.2.0",
+    "@map-colonies/prettier-config": "0.0.1",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.12",
+    "commitlint": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.8.1",
+    "husky": "^4.3.5",
+    "jest": "^26.6.3",
+    "jest-create-mock-instance": "^1.1.0",
+    "jest-html-reporters": "^2.1.2",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "standard-version": "^9.3.0",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4"
+  }
+}

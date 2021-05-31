@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "precommit": "npx typedoc --out docs"
+  }
+}

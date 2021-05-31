@@ -1,0 +1,56 @@
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
+      - '.gitignore'
+      - 'CHANGELOG.md'
+      - 'commitlint.config.js'
+      - 'tsbuildconfig.json'
+      - '.prettierrc.json'
+      - '.prettierignore'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out TS Project Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Node.js dependencies
+        run: npm i
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run format
+        run: npm run format
+
+      - name: Build project
+        run: npm run build
+
+      - name: setup git config
+        run: |
+          git config --global user.email "mapcolonies@gmail.com"
+          git config --global user.name "mapcolonies"
+
+      - name: Bump new version
+        run: npm run release
+
+      - name: Push git tag
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          tags: true
+
+      - name: Push to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
