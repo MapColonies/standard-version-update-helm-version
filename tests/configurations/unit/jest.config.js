@@ -1,15 +1,11 @@
 module.exports = {
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
-  testMatch: ['<rootDir>/tests/unit/**/*.spec.ts'],
+  testMatch: ['<rootDir>/tests/unit/**/*.spec.js'],
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!**/node_modules/**', '!**/vendor/**'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.js', '!**/node_modules/**', '!**/vendor/**'],
   coverageDirectory: '<rootDir>/coverage',
   coverageReporters: ['text-summary', 'html', 'json'],
   rootDir: '../../../.',
   setupFiles: ['<rootDir>/tests/configurations/jest.setup.js'],
-  preset: 'ts-jest',
   testEnvironment: 'node',
   reporters: [
     'default',
