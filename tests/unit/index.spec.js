@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const version = require('../../src/version');
+const index = require('../../src');
 
 describe('version', () => {
   let spec;
@@ -11,14 +11,15 @@ describe('version', () => {
   });
   describe('#readVersion', () => {
     test('it should equal to the version in the spec', () => {
-      expect(version.readVersion(specString)).toEqual(spec.version);
+      expect(index.readVersion(specString)).toEqual(spec.version);
     });
   });
   describe('#writeVersion', () => {
     test('it should update the spec file with version equal to avi', () => {
       const newVersion = 'avi';
-      const newSpecString = version.writeVersion(specString, newVersion);
+      const newSpecString = index.writeVersion(specString, newVersion);
       expect(yaml.load(newSpecString).version).toEqual(newVersion);
+      expect(yaml.load(newSpecString).appVersion).toEqual(newVersion);
     });
   });
 });
