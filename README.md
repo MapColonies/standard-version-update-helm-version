@@ -15,11 +15,7 @@ Create a file named `.versionrc`
   "bumpFiles": [
     {
       "filename": "/path/to/Chart.yml",
-      "updater": "/node_modules/@map-colonies/standard-version-update-helm-version/src/version.js"
-    },
-    {
-      "filename": "/path/to/Chart.yml",
-      "updater": "/node_modules/@map-colonies/standard-version-update-helm-version/src/appVersion.js"
+      "updater": "/node_modules/@map-colonies/standard-version-update-helm-version/src/index.js"
     }
   ]
 }
